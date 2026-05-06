@@ -19,4 +19,11 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('/api/reporters/', create_new_reporter),
+    path('/api/reporters/',get_all_reporters),
+    path('/api/reporters/<id:int>',get_reporter_details),
+    path('/api/issues/', create_new_issue),
+    path('/api/issues/',get_all_issues),
+    path('/api/issues/<id:int>',get_issue_details),
+    path('/api/issues/<status:str>', get_filtered_issue_details)
 ]
