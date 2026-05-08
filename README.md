@@ -89,7 +89,8 @@ Add screenshots to your repo and link them here.
 ### Reporters
 
 - **Success screenshot**: `docs/postman/reporters_success.png`
-- **Failure screenshot**: `docs/postman/reporters_failure.png`
+- **(Extra) Get by ID success**: `docs/postman/reporters_get_by_id_success.png`
+- **(Extra) List success**: `docs/postman/reporters_list_success.png`
 
 Suggested failure test:
 - POST reporter with invalid email (missing `@`) → should fail validation
@@ -98,6 +99,9 @@ Suggested failure test:
 
 - **Success screenshot**: `docs/postman/issues_success.png`
 - **Failure screenshot**: `docs/postman/issues_failure.png`
+- **(Extra) Get by ID success**: `docs/postman/issues_get_by_id_success.png`
+- **(Extra) List success**: `docs/postman/issues_list_success.png`
+- **(Extra) Filtered by status success**: `docs/postman/issues_filtered_by_status_success.png`
 
 Suggested failure tests:
 - POST issue with invalid `status` (not in `open/in_progress/resolved/closed`)
