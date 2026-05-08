@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'bug_tracker_app.urls'
+ROOT_URLCONF = "issue_tracker.urls"
 
 TEMPLATES = [
     {
@@ -66,7 +66,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'bug_tracker_app.wsgi.application'
+WSGI_APPLICATION = "issue_tracker.wsgi.application"
 
 
 # Database

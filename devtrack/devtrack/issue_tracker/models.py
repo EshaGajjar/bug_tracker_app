@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from datetime import datetime
 
 class BaseEntity(ABC):
     @abstractmethod
@@ -25,17 +26,38 @@ class Reporter(BaseEntity):
             raise ValueError('Invalid email')
 
 class Issue(BaseEntity):
-    def __init__(self, id, title, description, status, priority, reporter_id):
+    ALLOWED_STATUSES = {"open", "in_progress", "resolved", "closed"}
+    ALLOWED_PRIORITIES = {"low", "medium", "high", "critical"}
+
+    def __init__(
+        self,
+        id,
+        title,
+        description,
+        status,
+        priority,
+        reporter_id,
+        created_at=None,
+    ):
         self.id = id
         self.title = title
         self.description = description
         self.status = status
         self.priority = priority
         self.reporter_id = reporter_id
+        self.created_at = created_at or str(datetime.now())
      
     def validate(self):
-        # your validation here
-        pass
+        if not self.title:
+            raise ValueError("Title cannot be empty")
+        if self.status not in self.ALLOWED_STATUSES:
+            raise ValueError(
+                f"Invalid status. Must be one of: {sorted(self.ALLOWED_STATUSES)}"
+            )
+        if self.priority not in self.ALLOWED_PRIORITIES:
+            raise ValueError(
+                f"Invalid priority. Must be one of: {sorted(self.ALLOWED_PRIORITIES)}"
+            )
         
     def describe(self):
         return f"{self.title} [{self.priority}]"
@@ -43,7 +65,7 @@ class Issue(BaseEntity):
 class CriticalIssue(Issue):
     def describe(self):
         return f"[URGENT] {self.title} — needs immediate attention"
-
+    
 class LowPriorityIssue(Issue):
     def describe(self):
         return f"{self.title} — low priority, handle when free"
